@@ -1,6 +1,7 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerContoller : MonoBehaviour
 {
@@ -8,13 +9,15 @@ public class PlayerContoller : MonoBehaviour
     private float movementX;
     private float movementY;
     public float speed = 0;
+    private int score = 0;
+    public TextMeshProUGUI scoretext;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
 
         rb = GetComponent<Rigidbody>();
-       
+        SetScoreText();
 
         
     }
@@ -25,7 +28,16 @@ public class PlayerContoller : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
 
+
     }
+
+    void SetScoreText()
+    {
+
+        scoretext.text = "Score:" + score.ToString();
+
+    }
+
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
@@ -37,6 +49,8 @@ public class PlayerContoller : MonoBehaviour
         if (other.gameObject.CompareTag("pickup"))
         {
             other.gameObject.SetActive(false);
+            score++;
+            SetScoreText();
         }
     }
 }
