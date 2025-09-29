@@ -5,6 +5,8 @@ using TMPro;
 
 public class PlayerContoller : MonoBehaviour
 {
+    public GameObject self;
+    public GameObject goal;
     private Rigidbody rb;
     private float movementX;
     private float movementY;
@@ -15,7 +17,7 @@ public class PlayerContoller : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        goal.SetActive(false);
 
         rb = GetComponent<Rigidbody>();
         SetScoreText();
@@ -28,7 +30,7 @@ public class PlayerContoller : MonoBehaviour
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
-
+        
 
     }
 
@@ -38,7 +40,7 @@ public class PlayerContoller : MonoBehaviour
         scoretext.text = "Score:" + score.ToString();
         if (score >= 12)
         {
-            youwin.SetActive(true);
+            goal.SetActive(true);
         }
     }
 
@@ -55,6 +57,11 @@ public class PlayerContoller : MonoBehaviour
             other.gameObject.SetActive(false);
             score++;
             SetScoreText();
+        }
+        if (other.gameObject.CompareTag("Goal"))
+        {
+            self.gameObject.SetActive(false);
+            
         }
     }
 }
