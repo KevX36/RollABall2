@@ -2,9 +2,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Runtime.CompilerServices;
 
 public class PlayerContoller : MonoBehaviour
 {
+    private bool hitgoal = false;
     public GameObject self;
     public GameObject goal;
     private Rigidbody rb;
@@ -58,10 +60,27 @@ public class PlayerContoller : MonoBehaviour
             score++;
             SetScoreText();
         }
+        
         if (other.gameObject.CompareTag("Goal"))
         {
             self.gameObject.SetActive(false);
             
+            youwin.gameObject.SetActive(true);
+        }
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("enemy"))
+        {
+            Debug.Log("colided with enemy");
+            Destroy(self);
+            
+            youwin.gameObject.SetActive(true);
+            youwin.GetComponent<TextMeshProUGUI>().text = "You Loss, HA HA!";
+            
+
+
         }
     }
 }
