@@ -11,6 +11,7 @@ public class PlayerContoller : MonoBehaviour
     public float speed = 0;
     private int score = 0;
     public TextMeshProUGUI scoretext;
+    public GameObject youwin;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,7 +19,7 @@ public class PlayerContoller : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         SetScoreText();
-
+        youwin.SetActive(false);
         
     }
     void OnMove(InputValue movementValue)
@@ -35,7 +36,10 @@ public class PlayerContoller : MonoBehaviour
     {
 
         scoretext.text = "Score:" + score.ToString();
-
+        if (score >= 12)
+        {
+            youwin.SetActive(true);
+        }
     }
 
     private void FixedUpdate()
