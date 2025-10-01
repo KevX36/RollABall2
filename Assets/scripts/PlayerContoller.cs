@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System.Runtime.CompilerServices;
+using System;
 
 public class PlayerContoller : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class PlayerContoller : MonoBehaviour
     private int score = 0;
     public TextMeshProUGUI scoretext;
     public GameObject youwin;
+    public GameObject RestartAndQuitText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,8 +26,9 @@ public class PlayerContoller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         SetScoreText();
         youwin.SetActive(false);
-        
+        RestartAndQuitText.gameObject.SetActive(false);
     }
+    
     void OnMove(InputValue movementValue)
     {
 
@@ -78,9 +81,9 @@ public class PlayerContoller : MonoBehaviour
             
             youwin.gameObject.SetActive(true);
             youwin.GetComponent<TextMeshProUGUI>().text = "You Loss, HA HA!";
+            //RestartAndQuitText.gameObject.SetActive(true);
+
             
-
-
         }
     }
 }
