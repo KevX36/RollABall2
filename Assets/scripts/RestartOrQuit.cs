@@ -18,7 +18,7 @@ public class RestartOrQuit : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Application.Quit();
+            //Application.Quit();
         }
     }
 }
