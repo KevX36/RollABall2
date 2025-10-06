@@ -20,6 +20,7 @@ public class PlayerContoller : MonoBehaviour
     public GameObject RestartAndQuitText;
     private bool canDash = true;
     public GameObject dashTutorial;
+    public GameObject Dashtext;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -72,9 +73,14 @@ public class PlayerContoller : MonoBehaviour
             
             youwin.gameObject.SetActive(true);
         }
-        
+        if (other.gameObject.CompareTag("rechargeDash"))
+        {
+            canDash = true;
+            Dashtext.GetComponent<TextMeshProUGUI>().text = "Dash: online";
+        }
+
     }
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("enemy"))
         {
@@ -83,31 +89,26 @@ public class PlayerContoller : MonoBehaviour
             
             youwin.gameObject.SetActive(true);
             youwin.GetComponent<TextMeshProUGUI>().text = "You Loss, HA HA!";
-            //RestartAndQuitText.gameObject.SetActive(true);
-
+            RestartAndQuitText.gameObject.SetActive(true);
+            Dashtext.gameObject.SetActive(false);
             
         }
     }
-    private void OnCollisionDashRecharge(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("rechargedash"))
-        {
-            canDash = true;
-            dashTutorial.SetActive(false);
-        }
-    }
-    private void dash()
+   
+    void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (canDash == true)
             {
+                dashTutorial.SetActive(false);
+                
+                speed = speed * 2;
+
+                speed = speed / 2;
                 canDash = false;
-                speed = speed * 2;
-
-                speed = speed * 2;
-
+                Dashtext.GetComponent<TextMeshProUGUI>().text = "Dash: offline";
             }
         }
     }
