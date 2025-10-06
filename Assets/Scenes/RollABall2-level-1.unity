@@ -301,6 +301,7 @@ MonoBehaviour:
   youwin: {fileID: 1308183486}
   RestartAndQuitText: {fileID: 467195147}
   dashTutorial: {fileID: 37235070}
+  Dashtext: {fileID: 2089462137}
 --- !u!114 &112553904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2570,7 +2571,7 @@ Transform:
   m_GameObject: {fileID: 1027327976}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.49999997, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13408,7 +13409,7 @@ GameObject:
   - component: {fileID: 2089462140}
   - component: {fileID: 2089462139}
   m_Layer: 5
-  m_Name: EndText (1)
+  m_Name: dash text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
