@@ -73,10 +73,12 @@ public class PlayerContoller : MonoBehaviour
             
             youwin.gameObject.SetActive(true);
         }
+
         if (other.gameObject.CompareTag("rechargeDash"))
         {
-            canDash = true;
             Dashtext.GetComponent<TextMeshProUGUI>().text = "Dash: online";
+            canDash = true;
+            
         }
 
     }
