@@ -7,6 +7,7 @@ TagManager:
   - pickup
   - Goal
   - enemy
+  - rechargeDash
   layers:
   - Default
   - TransparentFX

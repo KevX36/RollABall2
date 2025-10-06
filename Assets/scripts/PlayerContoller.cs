@@ -18,11 +18,13 @@ public class PlayerContoller : MonoBehaviour
     public TextMeshProUGUI scoretext;
     public GameObject youwin;
     public GameObject RestartAndQuitText;
+    private bool canDash = true;
+    public GameObject dashTutorial;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         goal.SetActive(false);
-
+        RestartAndQuitText.SetActive(false);
         rb = GetComponent<Rigidbody>();
         SetScoreText();
         youwin.SetActive(false);
@@ -84,6 +86,29 @@ public class PlayerContoller : MonoBehaviour
             //RestartAndQuitText.gameObject.SetActive(true);
 
             
+        }
+    }
+    private void OnCollisionDashRecharge(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("rechargedash"))
+        {
+            canDash = true;
+            dashTutorial.SetActive(false);
+        }
+    }
+    private void dash()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (canDash == true)
+            {
+                canDash = false;
+                speed = speed * 2;
+
+                speed = speed * 2;
+
+            }
         }
     }
 }
