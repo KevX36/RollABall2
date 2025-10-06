@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RestartOrQuit : MonoBehaviour
 {
@@ -14,11 +15,11 @@ public class RestartOrQuit : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            //Application.Quit();
+            Application.Quit();
         }
     }
 }
