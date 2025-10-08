@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System.Runtime.CompilerServices;
 using System;
+using System.Threading;
 
 public class PlayerContoller : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class PlayerContoller : MonoBehaviour
     private bool canDash = true;
     public GameObject dashTutorial;
     public GameObject Dashtext;
+    public float dashBoost = 0;
+    private float baseSpeed = 0;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +34,7 @@ public class PlayerContoller : MonoBehaviour
         SetScoreText();
         youwin.SetActive(false);
         RestartAndQuitText.gameObject.SetActive(false);
+        baseSpeed = speed;
     }
     
     void OnMove(InputValue movementValue)
@@ -105,12 +110,14 @@ public class PlayerContoller : MonoBehaviour
             if (canDash == true)
             {
                 dashTutorial.SetActive(false);
-                
-                speed = speed * 2;
+                speed = speed * dashBoost;
+                Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+                rb.AddForce(movement * speed);
 
-                speed = speed / 2;
                 canDash = false;
                 Dashtext.GetComponent<TextMeshProUGUI>().text = "Dash: offline";
+                Thread.Sleep(100);
+                speed = baseSpeed;
             }
         }
     }
