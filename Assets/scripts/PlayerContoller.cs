@@ -22,19 +22,20 @@ public class PlayerContoller : MonoBehaviour
     private bool canDash = true;
     public GameObject dashTutorial;
     public GameObject Dashtext;
+    private float baseSpeed;
     public float dashBoost = 0;
-    private float baseSpeed = 0;
-    
+    public int goalTarget = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        baseSpeed = speed;
         goal.SetActive(false);
         RestartAndQuitText.SetActive(false);
         rb = GetComponent<Rigidbody>();
         SetScoreText();
         youwin.SetActive(false);
         RestartAndQuitText.gameObject.SetActive(false);
-        baseSpeed = speed;
+        
     }
     
     void OnMove(InputValue movementValue)
@@ -51,7 +52,7 @@ public class PlayerContoller : MonoBehaviour
     {
 
         scoretext.text = "Score:" + score.ToString();
-        if (score >= 12)
+        if (score >= goalTarget)
         {
             goal.SetActive(true);
         }
@@ -61,6 +62,10 @@ public class PlayerContoller : MonoBehaviour
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
+        if (speed > baseSpeed)
+        {
+            speed--;
+        }
     }
     
     void OnTriggerEnter(Collider other)
@@ -111,13 +116,10 @@ public class PlayerContoller : MonoBehaviour
             {
                 dashTutorial.SetActive(false);
                 speed = speed * dashBoost;
-                Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-                rb.AddForce(movement * speed);
 
                 canDash = false;
                 Dashtext.GetComponent<TextMeshProUGUI>().text = "Dash: offline";
-                Thread.Sleep(100);
-                speed = baseSpeed;
+                
             }
         }
     }

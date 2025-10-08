@@ -188,4 +188,4 @@ MonoBehaviour:
   RestartAndQuitText: {fileID: 0}
   dashTutorial: {fileID: 0}
   Dashtext: {fileID: 0}
-  dashBoost: 10
+  dashBoost: 7
