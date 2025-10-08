@@ -100,7 +100,7 @@ public class PlayerContoller : MonoBehaviour
             Destroy(self);
             
             youwin.gameObject.SetActive(true);
-            youwin.GetComponent<TextMeshProUGUI>().text = "You Loss, HA HA!";
+            youwin.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             RestartAndQuitText.gameObject.SetActive(true);
             Dashtext.gameObject.SetActive(false);
             
