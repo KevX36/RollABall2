@@ -20,7 +20,7 @@ public class PlayerContoller : MonoBehaviour
     public GameObject youwin;
     public GameObject RestartAndQuitText;
     private bool canDash = true;
-    public GameObject dashTutorial;
+    
     public GameObject Dashtext;
     private float baseSpeed;
     public float dashBoost = 0;
@@ -114,7 +114,7 @@ public class PlayerContoller : MonoBehaviour
         {
             if (canDash == true)
             {
-                dashTutorial.SetActive(false);
+                
                 speed = speed * dashBoost;
 
                 canDash = false;
