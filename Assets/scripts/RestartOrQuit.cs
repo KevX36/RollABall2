@@ -19,7 +19,7 @@ public class RestartOrQuit : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("mainMenu");
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

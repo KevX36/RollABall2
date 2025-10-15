@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class levelPick : MonoBehaviour
@@ -16,11 +17,22 @@ public class levelPick : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 100f))
+            {
+                if (hit.transform != null)
+                {
+                    levelclicked(hit.transform.gameObject);
+                }
+            }
         }
     }
     public void levelclicked(GameObject level)
     {
-
+        if (level.tag == "Lv1")
+        {
+            SceneManager.LoadScene("RollABall2-level-1");
+        }
     }
 }
