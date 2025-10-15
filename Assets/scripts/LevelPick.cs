@@ -30,9 +30,14 @@ public class levelPick : MonoBehaviour
     }
     public void levelclicked(GameObject level)
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         if (level.tag == "Lv1")
         {
             SceneManager.LoadScene("RollABall2-level-1");
         }
+
     }
 }

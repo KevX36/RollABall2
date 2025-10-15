@@ -21,9 +21,6 @@ public class RestartOrQuit : MonoBehaviour
         {
             SceneManager.LoadScene("mainMenu");
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+       
     }
 }
