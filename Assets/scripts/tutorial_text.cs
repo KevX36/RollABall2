@@ -2,12 +2,16 @@ using System.Threading;
 using System.Timers;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class tutorial_text : MonoBehaviour
 {
     public GameObject Tutorial;
     public int tutorialType = 0;
+    public int showAbillites = 0;
+    public GameObject shieldText;
+    public GameObject jumpText;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,6 +19,14 @@ public class tutorial_text : MonoBehaviour
         if (tutorialType == 0)
         {
             Tutorial.gameObject.SetActive(false);
+        }
+        if (showAbillites > 0)
+        {
+            jumpText.SetActive(false);
+            if (showAbillites > 1)
+            {
+                shieldText.SetActive(false);
+            }
         }
     }
     static float timer = 0.0f;
@@ -28,10 +40,12 @@ public class tutorial_text : MonoBehaviour
         {
             Tutorial.SetActive(false);
         }
+        
         if (tutorialType == 1)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                
                 timer = 0.0f;
                 Tutorial.SetActive(true);
                 Tutorial.GetComponent<TextMeshProUGUI>().text = "go into the blue cube to recharge your dashs";

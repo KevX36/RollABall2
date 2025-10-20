@@ -1182,6 +1182,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c20c3267524a33b418be0b5e860d7363, type: 3}
+--- !u!1 &776879968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1522825290751126108, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+  m_PrefabInstance: {fileID: 1308815058379088001}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -12440,12 +12445,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 928134585112217716, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: timerStop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 928134585112217716, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
       propertyPath: tutorialType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 928134585112217716, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: showAbillites
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296650418118100688, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3928030347917237835, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578743806437845312, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 89.5
       objectReference: {fileID: 0}
     - target: {fileID: 7978209746176189440, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
       propertyPath: m_Pivot.x
@@ -12526,6 +12547,26 @@ PrefabInstance:
     - target: {fileID: 7978209746176189440, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280615549930787699, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_margin.x
+      value: -187.18848
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280615549930787699, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_margin.y
+      value: -48.40497
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280615549930787699, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_margin.z
+      value: -195.09412
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280615549930787699, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280615549930787699, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12650,6 +12691,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2089462137}
     - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: dashText
+      value: 
+      objectReference: {fileID: 2089462137}
+    - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: abilities
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
       propertyPath: scoretext
       value: 
       objectReference: {fileID: 1137149271}
@@ -12657,6 +12706,10 @@ PrefabInstance:
       propertyPath: goalTarget
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: shieldText
+      value: 
+      objectReference: {fileID: 776879968}
     - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
       propertyPath: dashTutorial
       value: 
@@ -12668,6 +12721,10 @@ PrefabInstance:
     - target: {fileID: 6690413024673229381, guid: 7252448c54509de428545ef22e059214, type: 3}
       propertyPath: m_Name
       value: player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457892301788141119, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

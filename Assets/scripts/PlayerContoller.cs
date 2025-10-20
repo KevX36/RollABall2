@@ -27,7 +27,10 @@ public class PlayerContoller : MonoBehaviour
     private float baseSpeed;
     public float dashBoost = 0;
     public int goalTarget = 0;
-    public float timer = 0.0f;
+    public float shieldTimer = 0.0f;
+    public int abilities = 3;
+    private bool candash = true;
+    private float dashTimer = 0.0f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -115,21 +118,30 @@ public class PlayerContoller : MonoBehaviour
    
     void Update()
     {
+        dashTimer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (dashCount > 0)
+            if (candash == true)
             {
-                
-                speed = speed * dashBoost;
+                if (dashCount > 0)
+                {
 
-                dashCount --;
-                dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
-                
+                    speed = speed * dashBoost;
+
+                    dashCount--;
+                    candash = false;
+                    dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
+                    dashTimer = 0.0f;
+                }
             }
+        }
+        if (dashTimer >= 1.0f)
+        {
+            candash = true;
         }
     }
 }

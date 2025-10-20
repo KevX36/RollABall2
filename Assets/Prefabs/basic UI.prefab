@@ -572,7 +572,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tutorial: {fileID: 2822282757986676056}
   tutorialType: 0
-  timerStop: 3
+  showAbillites: 0
+  shieldText: {fileID: 1522825290751126108}
+  jumpText: {fileID: 0}
 --- !u!1 &3517992841172568922
 GameObject:
   m_ObjectHideFlags: 0
