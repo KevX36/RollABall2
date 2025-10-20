@@ -11,6 +11,7 @@ public class PlayerContoller : MonoBehaviour
     private bool hitgoal = false;
     public GameObject self;
     public GameObject goal;
+    public GameObject shield;
     private Rigidbody rb;
     private float movementX;
     private float movementY;
@@ -19,12 +20,15 @@ public class PlayerContoller : MonoBehaviour
     public TextMeshProUGUI scoretext;
     public GameObject youwin;
     public GameObject RestartAndQuitText;
-    private bool canDash = true;
-    
-    public GameObject Dashtext;
+    private int dashCount = 3;
+    private bool shieldReady = true;
+    public GameObject dashText;
+    public GameObject shieldText;
     private float baseSpeed;
     public float dashBoost = 0;
     public int goalTarget = 0;
+    public float timer = 0.0f;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,7 +39,7 @@ public class PlayerContoller : MonoBehaviour
         SetScoreText();
         youwin.SetActive(false);
         RestartAndQuitText.gameObject.SetActive(false);
-        
+        shield.SetActive(false);
     }
     
     void OnMove(InputValue movementValue)
@@ -80,15 +84,16 @@ public class PlayerContoller : MonoBehaviour
         if (other.gameObject.CompareTag("Goal"))
         {
             self.gameObject.SetActive(false);
-            
+            dashText.gameObject.SetActive(false);
+            shieldText.gameObject.SetActive(false);
             youwin.gameObject.SetActive(true);
         }
 
         if (other.gameObject.CompareTag("rechargeDash"))
         {
-            Dashtext.GetComponent<TextMeshProUGUI>().text = "Dash: online";
-            canDash = true;
             
+            dashCount = 3;
+            dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
         }
 
     }
@@ -102,8 +107,9 @@ public class PlayerContoller : MonoBehaviour
             youwin.gameObject.SetActive(true);
             youwin.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             RestartAndQuitText.gameObject.SetActive(true);
-            Dashtext.gameObject.SetActive(false);
-            
+            dashText.gameObject.SetActive(false);
+            shieldText.gameObject.SetActive(false);
+
         }
     }
    
@@ -115,13 +121,13 @@ public class PlayerContoller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (canDash == true)
+            if (dashCount > 0)
             {
                 
                 speed = speed * dashBoost;
 
-                canDash = false;
-                Dashtext.GetComponent<TextMeshProUGUI>().text = "Dash: offline";
+                dashCount --;
+                dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
                 
             }
         }

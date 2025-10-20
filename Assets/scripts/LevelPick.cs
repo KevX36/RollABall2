@@ -15,6 +15,10 @@ public class levelPick : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -30,10 +34,7 @@ public class levelPick : MonoBehaviour
     }
     public void levelclicked(GameObject level)
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        
         if (level.tag == "Lv1")
         {
             SceneManager.LoadScene("RollABall2-level-1");
