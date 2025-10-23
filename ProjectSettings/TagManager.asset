@@ -13,6 +13,7 @@ TagManager:
   - Lv3
   - controls
   - objects
+  - return to main menu
   layers:
   - Default
   - TransparentFX

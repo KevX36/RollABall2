@@ -10,6 +10,7 @@ public class PlayerContoller : MonoBehaviour
 {
     private bool hitgoal = false;
     public GameObject self;
+    public GameObject nextLVText;
     public GameObject goal;
     public GameObject shield;
     private Rigidbody rb;
@@ -24,6 +25,7 @@ public class PlayerContoller : MonoBehaviour
     private bool shieldReady = true;
     public GameObject dashText;
     public GameObject shieldText;
+    public GameObject jumpText;
     private float baseSpeed;
     public float dashBoost = 0;
     public int goalTarget = 0;
@@ -38,6 +40,7 @@ public class PlayerContoller : MonoBehaviour
         baseSpeed = speed;
         goal.SetActive(false);
         RestartAndQuitText.SetActive(false);
+        nextLVText.SetActive(false);
         rb = GetComponent<Rigidbody>();
         SetScoreText();
         youwin.SetActive(false);
@@ -89,6 +92,8 @@ public class PlayerContoller : MonoBehaviour
             self.gameObject.SetActive(false);
             dashText.gameObject.SetActive(false);
             shieldText.gameObject.SetActive(false);
+            jumpText.gameObject.SetActive(false);
+            nextLVText.SetActive(true);
             youwin.gameObject.SetActive(true);
         }
 
