@@ -11,6 +11,8 @@ TagManager:
   - Lv1
   - Lv2
   - Lv3
+  - controls
+  - objects
   layers:
   - Default
   - TransparentFX
