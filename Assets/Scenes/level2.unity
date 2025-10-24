@@ -224,6 +224,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+--- !u!1 &115659442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4514035602829102245, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+  m_PrefabInstance: {fileID: 115659441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &115659443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6703237918701109109, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+  m_PrefabInstance: {fileID: 115659441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &115659444 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1027469463085781019, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+  m_PrefabInstance: {fileID: 115659441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &305084485
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +711,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1841163313}
     - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: jumpText
+      value: 
+      objectReference: {fileID: 115659443}
+    - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
       propertyPath: abilities
       value: 2
       objectReference: {fileID: 0}
@@ -704,9 +723,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1992512679}
     - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 115659444}
+    - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
       propertyPath: goalTarget
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: nextLVText
+      value: 
+      objectReference: {fileID: 115659442}
     - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
       propertyPath: shieldText
       value: 

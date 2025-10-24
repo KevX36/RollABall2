@@ -33,7 +33,11 @@ public class PlayerContoller : MonoBehaviour
     public int abilities = 3;
     private bool candash = true;
     private float dashTimer = 0.0f;
+    public GameObject timerText;
+    private float timer = 0.0f;
     
+    bool levelOver = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +50,7 @@ public class PlayerContoller : MonoBehaviour
         youwin.SetActive(false);
         RestartAndQuitText.gameObject.SetActive(false);
         shield.SetActive(false);
+        timerText.GetComponent<TextMeshProUGUI>().text = $"{timer}";
     }
     
     void OnMove(InputValue movementValue)
@@ -89,6 +94,7 @@ public class PlayerContoller : MonoBehaviour
         
         if (other.gameObject.CompareTag("Goal"))
         {
+            levelOver = true;
             self.gameObject.SetActive(false);
             dashText.gameObject.SetActive(false);
             shieldText.gameObject.SetActive(false);
@@ -123,6 +129,12 @@ public class PlayerContoller : MonoBehaviour
    
     void Update()
     {
+        timer += Time.deltaTime;
+        if (levelOver == false)
+        {
+            timerText.GetComponent<TextMeshProUGUI>().text = $"{System.Math.Round(timer, 2)}";
+        }
+        
         dashTimer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {

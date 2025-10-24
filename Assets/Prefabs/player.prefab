@@ -182,15 +182,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 6690413024673229381}
+  nextLVText: {fileID: 0}
   goal: {fileID: 0}
   shield: {fileID: 7457892301788141119}
-  speed: 5
+  speed: 6
   scoretext: {fileID: 0}
   youwin: {fileID: 0}
   RestartAndQuitText: {fileID: 0}
-  Dashtext: {fileID: 0}
-  dashBoost: 7
+  dashText: {fileID: 0}
+  shieldText: {fileID: 0}
+  jumpText: {fileID: 0}
+  dashBoost: 4
   goalTarget: 0
+  shieldTimer: 0
+  abilities: 3
 --- !u!1 &7457892301788141119
 GameObject:
   m_ObjectHideFlags: 0

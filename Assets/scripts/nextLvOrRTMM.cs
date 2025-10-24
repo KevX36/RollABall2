@@ -9,7 +9,7 @@ public class nextLvOrRTMM : MonoBehaviour
     {
         
     }
-    int nextLV =0;
+    public int nextLV =0;
     public GameObject Self;
     // Update is called once per frame
     void Update()
