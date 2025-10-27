@@ -35,8 +35,9 @@ public class PlayerContoller : MonoBehaviour
     private float dashTimer = 0.0f;
     public GameObject timerText;
     private float timer = 0.0f;
-    
+    public float shieldEnd = 2;
     bool levelOver = false;
+    public float dashCoolDown = 1.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -109,7 +110,12 @@ public class PlayerContoller : MonoBehaviour
             dashCount = 3;
             dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
         }
+        if (other.gameObject.CompareTag("rechargeShield"))
+        {
 
+            shieldReady = true;
+            dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
+        }
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -130,6 +136,7 @@ public class PlayerContoller : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        shieldTimer = Time.deltaTime;
         if (levelOver == false)
         {
             timerText.GetComponent<TextMeshProUGUI>().text = $"{System.Math.Round(timer, 2)}";
@@ -156,9 +163,31 @@ public class PlayerContoller : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (shieldReady == true)
+            {
+                shieldTimer = 0.0f;
+                shield.SetActive(true);
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            if (shieldReady == true)
+            {
+                shieldTimer = 0.0f;
+                shield.SetActive(true);
+            }
+
+        }
         if (dashTimer >= 1.0f)
         {
             candash = true;
+        }
+        if (shieldTimer >= shieldEnd)
+        {
+            shield.SetActive(false);
         }
     }
 }
