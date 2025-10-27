@@ -318,7 +318,7 @@ MonoBehaviour:
   dashText: {fileID: 0}
   shieldText: {fileID: 0}
   jumpText: {fileID: 0}
-  dashBoost: 4
+  dashBoost: 5
   goalTarget: 0
   shieldTimer: 0
   abilities: 3
