@@ -39,6 +39,7 @@ public class PlayerContoller : MonoBehaviour
     bool levelOver = false;
     public float dashCoolDown = 1.0f;
     bool shieldOn = false;
+    public GameObject weakShield;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -140,7 +141,7 @@ public class PlayerContoller : MonoBehaviour
    
     void Update()
     {
-        bool turnOffShield = false;
+        
         timer += Time.deltaTime;
         shieldTimer += Time.deltaTime;
         if (levelOver == false)
@@ -205,12 +206,19 @@ public class PlayerContoller : MonoBehaviour
         {
             candash = true;
         }
-        
-        if (shieldTimer >= shieldEnd)
+        if (shieldTimer >= shieldEnd - 0.5f)
         {
             if (shieldOn == true)
             {
                 shield.SetActive(false);
+                weakShield.SetActive(true);
+            }
+        }
+        if (shieldTimer >= shieldEnd)
+        {
+            if (shieldOn == true)
+            {
+                weakShield.SetActive(false);
                 shieldOn = false;
                 if (shieldReady == false)
                 {
