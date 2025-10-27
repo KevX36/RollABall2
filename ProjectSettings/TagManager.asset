@@ -15,6 +15,7 @@ TagManager:
   - objects
   - return to main menu
   - rechargeShield
+  - death
   layers:
   - Default
   - TransparentFX
