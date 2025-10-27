@@ -38,6 +38,7 @@ public class PlayerContoller : MonoBehaviour
     public float shieldEnd = 2;
     bool levelOver = false;
     public float dashCoolDown = 1.0f;
+    bool shieldOn = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -114,23 +115,27 @@ public class PlayerContoller : MonoBehaviour
         {
 
             shieldReady = true;
-            dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
+            shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: ready";
         }
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("enemy"))
+        if (shieldOn == false)
         {
-            Debug.Log("colided with enemy");
-            Destroy(self);
-            
-            youwin.gameObject.SetActive(true);
-            youwin.GetComponent<TextMeshProUGUI>().text = "You Lose!";
-            RestartAndQuitText.gameObject.SetActive(true);
-            dashText.gameObject.SetActive(false);
-            shieldText.gameObject.SetActive(false);
+            if (collision.gameObject.CompareTag("enemy"))
+            {
+                Debug.Log("colided with enemy");
+                Destroy(self);
 
+                youwin.gameObject.SetActive(true);
+                youwin.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+                RestartAndQuitText.gameObject.SetActive(true);
+                dashText.gameObject.SetActive(false);
+                shieldText.gameObject.SetActive(false);
+
+            }
         }
+        
     }
    
     void Update()
@@ -165,19 +170,32 @@ public class PlayerContoller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (shieldReady == true)
+            if (abilities > 1)
             {
-                shieldTimer = 0.0f;
-                shield.SetActive(true);
+                if (shieldReady == true)
+                {
+                    shieldTimer = 0.0f;
+                    shield.SetActive(true);
+                    shieldOn = true;
+                    shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: active";
+                    shieldReady = false;
+                }
             }
+
 
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
-            if (shieldReady == true)
+            if (abilities > 1)
             {
-                shieldTimer = 0.0f;
-                shield.SetActive(true);
+                if (shieldReady == true)
+                {
+                    shieldTimer = 0.0f;
+                    shield.SetActive(true);
+                    shieldOn = true;
+                    shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: active";
+                    shieldReady = false;
+                }
             }
 
         }
@@ -185,9 +203,15 @@ public class PlayerContoller : MonoBehaviour
         {
             candash = true;
         }
-        if (shieldTimer >= shieldEnd)
+        if (shieldOn == true)
         {
-            shield.SetActive(false);
+            if (shieldTimer >= shieldEnd)
+            {
+                shield.SetActive(false);
+                shieldOn = false;
+                shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: inactive";
+            }
         }
+        
     }
 }
