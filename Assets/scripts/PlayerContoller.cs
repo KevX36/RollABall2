@@ -35,7 +35,7 @@ public class PlayerContoller : MonoBehaviour
     private float dashTimer = 0.0f;
     public GameObject timerText;
     private float timer = 0.0f;
-    public float shieldEnd = 2;
+    public float shieldEnd = 2.0f;
     bool levelOver = false;
     public float dashCoolDown = 1.0f;
     bool shieldOn = false;
@@ -140,8 +140,9 @@ public class PlayerContoller : MonoBehaviour
    
     void Update()
     {
+        bool turnOffShield = false;
         timer += Time.deltaTime;
-        shieldTimer = Time.deltaTime;
+        shieldTimer += Time.deltaTime;
         if (levelOver == false)
         {
             timerText.GetComponent<TextMeshProUGUI>().text = $"{System.Math.Round(timer, 2)}";
@@ -190,10 +191,11 @@ public class PlayerContoller : MonoBehaviour
             {
                 if (shieldReady == true)
                 {
+                    shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: online";
                     shieldTimer = 0.0f;
                     shield.SetActive(true);
                     shieldOn = true;
-                    shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: active";
+                    
                     shieldReady = false;
                 }
             }
@@ -203,13 +205,17 @@ public class PlayerContoller : MonoBehaviour
         {
             candash = true;
         }
-        if (shieldOn == true)
+        
+        if (shieldTimer >= shieldEnd)
         {
-            if (shieldTimer >= shieldEnd)
+            if (shieldOn == true)
             {
                 shield.SetActive(false);
                 shieldOn = false;
-                shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: inactive";
+                if (shieldReady == false)
+                {
+                    shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: offline";
+                }
             }
         }
         

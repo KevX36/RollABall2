@@ -197,7 +197,7 @@ MonoBehaviour:
   shieldTimer: 0
   abilities: 3
   timerText: {fileID: 0}
-  shieldEnd: 2
+  shieldEnd: 3
   dashCoolDown: 1
 --- !u!1 &7457892301788141119
 GameObject:

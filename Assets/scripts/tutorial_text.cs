@@ -20,6 +20,10 @@ public class tutorial_text : MonoBehaviour
         {
             Tutorial.gameObject.SetActive(false);
         }
+        if (tutorialType == 2)
+        {
+            Tutorial.GetComponent<TextMeshProUGUI>().text = "press E or V to active your shield";
+        }
         if (showAbillites > 0)
         {
             jumpText.SetActive(false);
@@ -49,6 +53,28 @@ public class tutorial_text : MonoBehaviour
                 timer = 0.0f;
                 Tutorial.SetActive(true);
                 Tutorial.GetComponent<TextMeshProUGUI>().text = "go into the blue cube to recharge your dashs";
+                closeTutorial = true;
+            }
+        }
+        if (tutorialType == 2)
+        {
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+
+                timer = 0.0f;
+                Tutorial.SetActive(true);
+                Tutorial.GetComponent<TextMeshProUGUI>().text = "go into the pink cube to recharge your shield";
+                closeTutorial = true;
+            }
+        }
+        if (tutorialType == 2)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+
+                timer = 0.0f;
+                Tutorial.SetActive(true);
+                Tutorial.GetComponent<TextMeshProUGUI>().text = "go into the pink cube to recharge your shield";
                 closeTutorial = true;
             }
         }
