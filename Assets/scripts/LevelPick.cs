@@ -43,6 +43,10 @@ public class levelPick : MonoBehaviour
         {
             SceneManager.LoadScene("level2");
         }
+        else if (level.tag == "Lv3")
+        {
+            SceneManager.LoadScene("level3");
+        }
         else if (level.tag == "controls")
         {
             SceneManager.LoadScene("controls");
