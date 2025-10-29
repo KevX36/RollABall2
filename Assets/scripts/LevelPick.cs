@@ -39,21 +39,21 @@ public class levelPick : MonoBehaviour
         {
             SceneManager.LoadScene("RollABall2-level-1");
         }
-        else if (level.tag == "Lv2")
+        if (level.tag == "Lv2")
         {
             SceneManager.LoadScene("level2");
         }
-        else if (level.tag == "Lv3")
+        if (level.tag == "Lv3")
         {
             SceneManager.LoadScene("level3");
         }
-        else if (level.tag == "controls")
+        if (level.tag == "controls")
         {
             SceneManager.LoadScene("controls");
         }
-        else if (level.tag == "objects")
+        if (level.tag == "objects")
         {
-            SceneManager.LoadScene("object info");
+            SceneManager.LoadScene("objectInfo");
         }
 
     }
