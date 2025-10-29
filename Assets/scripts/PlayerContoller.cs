@@ -118,19 +118,7 @@ public class PlayerContoller : MonoBehaviour
             shieldReady = true;
             shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: ready";
         }
-        if (other.gameObject.CompareTag("death"))
-        {
-            Debug.Log("colided with death");
-            Destroy(self);
-
-            youwin.gameObject.SetActive(true);
-            youwin.GetComponent<TextMeshProUGUI>().text = "You Lose!";
-            RestartAndQuitText.gameObject.SetActive(true);
-            dashText.gameObject.SetActive(false);
-            shieldText.gameObject.SetActive(false);
-            jumpText.gameObject.SetActive(false);
-
-        }
+        
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -155,7 +143,17 @@ public class PlayerContoller : MonoBehaviour
    
     void Update()
     {
-        
+        if (self.transform.position.y < -20)
+        {
+            Destroy(self);
+
+            youwin.gameObject.SetActive(true);
+            youwin.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            RestartAndQuitText.gameObject.SetActive(true);
+            dashText.gameObject.SetActive(false);
+            shieldText.gameObject.SetActive(false);
+            jumpText.gameObject.SetActive(false);
+        }
         timer += Time.deltaTime;
         shieldTimer += Time.deltaTime;
         if (levelOver == false)
