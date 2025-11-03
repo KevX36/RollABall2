@@ -20,4 +20,8 @@ public class enemymovement : MonoBehaviour
             nav.SetDestination(player.position);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("shockwave")) ;
+    }
 }

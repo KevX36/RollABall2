@@ -8,13 +8,10 @@ TagManager:
   - Goal
   - enemy
   - rechargeDash
-  - Lv1
   - return to main menu
-  - Lv2
-  - objects
-  - Lv3
-  - controls
   - rechargeShield
+  - Lv1
+  - rechargeShock
   layers:
   - Default
   - TransparentFX

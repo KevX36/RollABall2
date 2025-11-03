@@ -12758,6 +12758,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 37235070}
     - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
+      propertyPath: shockWaveText
+      value: 
+      objectReference: {fileID: 1787166512}
+    - target: {fileID: 5867849087287805823, guid: 7252448c54509de428545ef22e059214, type: 3}
       propertyPath: RestartAndQuitText
       value: 
       objectReference: {fileID: 467195147}

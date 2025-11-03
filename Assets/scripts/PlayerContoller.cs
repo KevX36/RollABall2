@@ -21,29 +21,57 @@ public class PlayerContoller : MonoBehaviour
     public TextMeshProUGUI scoretext;
     public GameObject youwin;
     public GameObject RestartAndQuitText;
-    private int dashCount = 3;
-    private bool shieldReady = true;
     public GameObject dashText;
     public GameObject shieldText;
-    public GameObject jumpText;
+    public GameObject shockWaveText;
     private float baseSpeed;
-    public float dashBoost = 0;
     public int goalTarget = 0;
-    public float shieldTimer = 0.0f;
     public int abilities = 3;
-    private bool candash = true;
-    private float dashTimer = 0.0f;
     public GameObject timerText;
     private float timer = 0.0f;
-    public float shieldEnd = 2.0f;
     bool levelOver = false;
-    public float dashCoolDown = 1.0f;
-    bool shieldOn = false;
     public GameObject weakShield;
+
+
+
+    //dash
+    public int dashCap = 3;
+    private int dashCount;
+    public float dashBoost = 0;
+    private bool shieldReady = true;
+    private bool candash = true;
+    private float dashTimer = 0.0f;
+    public float dashCoolDown = 1.0f;
+
+
+    //Shield
+    
+    public float shieldTimer = 0.0f;
+    
+    
+    
+    
+    
+    public float shieldEnd = 2.0f;
+    
+    
+    bool shieldOn = false;
+    
+    //shock
+    public int shockCount = 0;
+    public int shockCap = 3;
+    public float shockTimer = 1;
+    public float shockCooldown = 5;
+    private bool shockRecharge = true;
+    private bool shockUsed = false;
+    public int shockRechargeReady=5;
+
+    public float colorChangeTimer = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dashCount = dashCap;
         baseSpeed = speed;
         goal.SetActive(false);
         RestartAndQuitText.SetActive(false);
@@ -101,15 +129,15 @@ public class PlayerContoller : MonoBehaviour
             self.gameObject.SetActive(false);
             dashText.gameObject.SetActive(false);
             shieldText.gameObject.SetActive(false);
-            jumpText.gameObject.SetActive(false);
+            shockWaveText.gameObject.SetActive(false);
             nextLVText.SetActive(true);
             youwin.gameObject.SetActive(true);
         }
-
+        //ability recharges
         if (other.gameObject.CompareTag("rechargeDash"))
         {
             
-            dashCount = 3;
+            dashCount = dashCap;
             dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
         }
         if (other.gameObject.CompareTag("rechargeShield"))
@@ -117,6 +145,18 @@ public class PlayerContoller : MonoBehaviour
 
             shieldReady = true;
             shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: ready";
+        }
+        if (shockRecharge == true)
+        {
+            if (other.gameObject.CompareTag("rechargeShock"))
+            {
+                shockCount++;
+                if (shockCount > shockCap)
+                {
+                    shockCount = shockCap;
+                }
+                shockRecharge = false;
+            }
         }
         
     }
@@ -134,7 +174,7 @@ public class PlayerContoller : MonoBehaviour
                 RestartAndQuitText.gameObject.SetActive(true);
                 dashText.gameObject.SetActive(false);
                 shieldText.gameObject.SetActive(false);
-                jumpText.gameObject.SetActive(false);
+                shockWaveText.gameObject.SetActive(false);
 
             }
         }
@@ -152,10 +192,12 @@ public class PlayerContoller : MonoBehaviour
             RestartAndQuitText.gameObject.SetActive(true);
             dashText.gameObject.SetActive(false);
             shieldText.gameObject.SetActive(false);
-            jumpText.gameObject.SetActive(false);
+            shockWaveText.gameObject.SetActive(false);
         }
         timer += Time.deltaTime;
         shieldTimer += Time.deltaTime;
+        shockTimer += Time.deltaTime;
+        colorChangeTimer += Time.deltaTime;
         if (levelOver == false)
         {
             timerText.GetComponent<TextMeshProUGUI>().text = $"{System.Math.Round(timer, 2)}";
@@ -236,6 +278,14 @@ public class PlayerContoller : MonoBehaviour
                 {
                     shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: offline";
                 }
+            }
+        }
+        if (shockUsed == false)
+        {
+            if (shockTimer == shockRechargeReady)
+            {
+                shockRecharge = true;
+                shockTimer = 0;
             }
         }
         
