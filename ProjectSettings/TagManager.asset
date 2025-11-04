@@ -12,6 +12,7 @@ TagManager:
   - rechargeShield
   - Lv1
   - rechargeShock
+  - Shockwave
   layers:
   - Default
   - TransparentFX
