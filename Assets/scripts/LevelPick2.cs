@@ -27,4 +27,12 @@ public class LevelPick2 : MonoBehaviour
     {
         SceneManager.LoadScene("mainMenu");
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
