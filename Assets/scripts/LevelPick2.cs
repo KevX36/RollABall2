@@ -23,4 +23,8 @@ public class LevelPick2 : MonoBehaviour
     {
         SceneManager.LoadScene("objectInfo");
     }
+    public void loadMainMenu()
+    {
+        SceneManager.LoadScene("mainMenu");
+    }
 }

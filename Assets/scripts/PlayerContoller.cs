@@ -75,7 +75,7 @@ public class PlayerContoller : MonoBehaviour
         baseSpeed = speed;
         goal.SetActive(false);
         RestartAndQuitText.SetActive(false);
-        nextLVText.SetActive(false);
+        nextLVText.gameObject.SetActive(false);
         rb = GetComponent<Rigidbody>();
         SetScoreText();
         youwin.SetActive(false);
@@ -125,12 +125,13 @@ public class PlayerContoller : MonoBehaviour
         
         if (other.gameObject.CompareTag("Goal"))
         {
+            nextLVText.gameObject.SetActive(true);
             levelOver = true;
             self.gameObject.SetActive(false);
             dashText.gameObject.SetActive(false);
             shieldText.gameObject.SetActive(false);
             shockWaveText.gameObject.SetActive(false);
-            nextLVText.SetActive(true);
+            
             youwin.gameObject.SetActive(true);
         }
         //ability recharges
