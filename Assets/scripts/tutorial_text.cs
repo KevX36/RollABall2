@@ -2,7 +2,7 @@ using System.Threading;
 using System.Timers;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.Search;
+
 using UnityEngine;
 
 public class tutorial_text : MonoBehaviour

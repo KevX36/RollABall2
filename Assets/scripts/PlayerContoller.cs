@@ -8,7 +8,7 @@ using System.Threading;
 
 public class PlayerContoller : MonoBehaviour
 {
-    private bool hitgoal = false;
+    
     public GameObject self;
     public GameObject nextLVText;
     public GameObject goal;
