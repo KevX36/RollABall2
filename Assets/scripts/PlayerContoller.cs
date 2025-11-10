@@ -257,6 +257,10 @@ public class PlayerContoller : MonoBehaviour
             }
 
         }
+        if (abilities > 2)
+        {
+
+        }
         if (dashTimer >= dashCoolDown)
         {
             candash = true;
