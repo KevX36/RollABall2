@@ -309,31 +309,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 6690413024673229381}
-  nextLVText: {fileID: 0}
   goal: {fileID: 0}
-  shield: {fileID: 7457892301788141119}
-  speed: 6
-  scoretext: {fileID: 0}
+  goalTarget: 0
+  abilities: 3
+  nextLVText: {fileID: 0}
   youwin: {fileID: 0}
   RestartAndQuitText: {fileID: 0}
   dashText: {fileID: 0}
   shieldText: {fileID: 0}
   shockWaveText: {fileID: 0}
-  goalTarget: 0
-  abilities: 3
+  speed: 6
+  scoretext: {fileID: 0}
   timerText: {fileID: 0}
-  weakShield: {fileID: 4852724349620660812}
   dashCap: 3
   dashBoost: 5
   dashCoolDown: 1
   shieldTimer: 0
+  weakShield: {fileID: 4852724349620660812}
+  shield: {fileID: 7457892301788141119}
   shieldEnd: 3
   shockCount: 0
   shockCap: 3
   shockTimer: 1
   shockCooldown: 5
   shockRechargeReady: 5
-  colorChangeTimer: 0
+  shock: {fileID: 8133195054781809682}
+  shockactive: 1
 --- !u!1 &7457892301788141119
 GameObject:
   m_ObjectHideFlags: 0

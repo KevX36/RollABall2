@@ -37,7 +37,7 @@ public class enemymovement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("shockwave"))
+        if (other.gameObject.CompareTag("Shockwave"))
         {
             stuned = true;
         }

@@ -10,27 +10,36 @@ public class PlayerContoller : MonoBehaviour
 {
     
     public GameObject self;
-    public GameObject nextLVText;
+    
     public GameObject goal;
-    public GameObject shield;
+    
     private Rigidbody rb;
     private float movementX;
     private float movementY;
-    public float speed = 0;
-    private int score = 0;
-    public TextMeshProUGUI scoretext;
+    
+    
+   
+    private float baseSpeed;
+    public int goalTarget = 0;
+    public int abilities = 3;
+    
+    private float timer = 0.0f;
+    bool levelOver = false;
+    
+
+    //text and text releated
+    public GameObject nextLVText;
     public GameObject youwin;
     public GameObject RestartAndQuitText;
     public GameObject dashText;
     public GameObject shieldText;
     public GameObject shockWaveText;
-    private float baseSpeed;
-    public int goalTarget = 0;
-    public int abilities = 3;
+    public float speed = 0;
+    private int score = 0;
+    public TextMeshProUGUI scoretext;
     public GameObject timerText;
-    private float timer = 0.0f;
-    bool levelOver = false;
-    public GameObject weakShield;
+
+
 
 
 
@@ -42,13 +51,13 @@ public class PlayerContoller : MonoBehaviour
     private bool candash = true;
     private float dashTimer = 0.0f;
     public float dashCoolDown = 1.0f;
-
+    
 
     //Shield
     
     public float shieldTimer = 0.0f;
-    
-    
+    public GameObject weakShield;
+    public GameObject shield;
     
     
     
@@ -60,13 +69,14 @@ public class PlayerContoller : MonoBehaviour
     //shock
     public int shockCount = 0;
     public int shockCap = 3;
-    public float shockTimer = 1;
+    public float shockTimer = 0.0f;
     public float shockCooldown = 5;
     private bool shockRecharge = true;
     private bool shockUsed = false;
     public int shockRechargeReady=5;
-
-    public float colorChangeTimer = 0;
+    public GameObject shock;
+    
+    public float shockactive = 0.5f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,6 +92,7 @@ public class PlayerContoller : MonoBehaviour
         RestartAndQuitText.gameObject.SetActive(false);
         shield.SetActive(false);
         timerText.GetComponent<TextMeshProUGUI>().text = $"{timer}";
+        shock.gameObject.SetActive(false);
     }
     
     void OnMove(InputValue movementValue)
@@ -184,6 +195,7 @@ public class PlayerContoller : MonoBehaviour
    
     void Update()
     {
+        //lose if you fall
         if (self.transform.position.y < -20)
         {
             Destroy(self);
@@ -195,15 +207,16 @@ public class PlayerContoller : MonoBehaviour
             shieldText.gameObject.SetActive(false);
             shockWaveText.gameObject.SetActive(false);
         }
+        //timers
         timer += Time.deltaTime;
         shieldTimer += Time.deltaTime;
         shockTimer += Time.deltaTime;
-        colorChangeTimer += Time.deltaTime;
+        
         if (levelOver == false)
         {
             timerText.GetComponent<TextMeshProUGUI>().text = $"{System.Math.Round(timer, 2)}";
         }
-        
+        //dash
         dashTimer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -225,6 +238,11 @@ public class PlayerContoller : MonoBehaviour
                 }
             }
         }
+        if (dashTimer >= dashCoolDown)
+        {
+            candash = true;
+        }
+        //shield
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (abilities > 1)
@@ -257,14 +275,6 @@ public class PlayerContoller : MonoBehaviour
             }
 
         }
-        if (abilities > 2)
-        {
-
-        }
-        if (dashTimer >= dashCoolDown)
-        {
-            candash = true;
-        }
         if (shieldTimer >= shieldEnd - 0.5f)
         {
             if (shieldOn == true)
@@ -285,14 +295,48 @@ public class PlayerContoller : MonoBehaviour
                 }
             }
         }
+        //shock
+        if (abilities > 2)
+        {
+            if (shockUsed == false)
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    shock.gameObject.SetActive(true);
+                    shockTimer = 0;
+                    shockUsed = true;
+                }
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+                    shock.gameObject.SetActive(true);
+                    shockTimer = 0;
+                    shockUsed = true;
+                }
+            }
+        }
+        
+        
         if (shockUsed == false)
         {
-            if (shockTimer == shockRechargeReady)
+            if (shockTimer >= shockRechargeReady)
             {
                 shockRecharge = true;
                 shockTimer = 0;
             }
         }
+        if (shockUsed == true)
+        {
+            if (shockTimer >= shockactive)
+            {
+                shock.gameObject.SetActive(false);
+            }
+            if (shockTimer >= shockCooldown)
+            {
+                shockUsed = false;
+                shockTimer = 0;
+            }
+        }
+        
         
     }
 }

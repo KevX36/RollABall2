@@ -32,6 +32,7 @@ public class tutorial_text : MonoBehaviour
                 shieldText.SetActive(false);
             }
         }
+        closeTutorial = false;
     }
     static float timer = 0.0f;
     static bool closeTutorial = false;
