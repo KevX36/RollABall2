@@ -11,7 +11,7 @@ public class ShootingEnemyControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bullet.transform.position = transform.forward;
+        
         stunStatic.gameObject.SetActive(false);
     }
     private float shotTimer = 0;
@@ -23,7 +23,7 @@ public class ShootingEnemyControl : MonoBehaviour
         {
             if (player != null)
             {
-                Vector3 aim = player.transform.position;
+                Vector3 aim = player.transform.position - transform.position;
                 transform.rotation = Quaternion.LookRotation(aim);
             }
         }
