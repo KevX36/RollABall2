@@ -332,7 +332,6 @@ MonoBehaviour:
   shockCap: 3
   shockTimer: 1
   shockCooldown: 5
-  shockRechargeReady: 5
   shock: {fileID: 8133195054781809682}
   shockactive: 1
 --- !u!1 &7457892301788141119
@@ -478,7 +477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5647193509247198734
 Transform:
   m_ObjectHideFlags: 0
@@ -566,5 +565,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.52
   m_Center: {x: 0, y: 0, z: 0}

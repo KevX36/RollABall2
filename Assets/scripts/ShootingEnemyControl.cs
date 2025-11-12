@@ -4,18 +4,50 @@ using UnityEngine.AI;
 public class ShootingEnemyControl : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Transform player;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
+        stunStatic.gameObject.SetActive(false);
     }
-    public Transform player;
-    
+
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (stuned == false)
         {
-            
+            if (player != null)
+            {
+                
+            }
+        }
+        if (stuned == true)
+        {
+            stunTimer += Time.deltaTime;
+            if (stunTimer >= StunRecover)
+            {
+                stuned = false;
+                stunTimer = 0.0f;
+                stunStatic.gameObject.SetActive(false);
+            }
+        }
+
+    }
+
+    //stun controlls
+    private bool stuned = false;
+    private float stunTimer = 0.0f;
+    public float StunRecover = 3;
+
+    public GameObject stunStatic;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Shockwave"))
+        {
+            stuned = true;
+            stunStatic.gameObject.SetActive(true);
         }
     }
 }

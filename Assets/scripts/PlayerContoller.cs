@@ -71,9 +71,9 @@ public class PlayerContoller : MonoBehaviour
     public int shockCap = 3;
     public float shockTimer = 0.0f;
     public float shockCooldown = 5;
-    private bool shockRecharge = true;
+    
     private bool shockUsed = false;
-    public int shockRechargeReady=5;
+    
     public GameObject shock;
     
     public float shockactive = 0.5f;
@@ -158,19 +158,18 @@ public class PlayerContoller : MonoBehaviour
             shieldReady = true;
             shieldText.GetComponent<TextMeshProUGUI>().text = $"Shield: ready";
         }
-        if (shockRecharge == true)
+        if (other.gameObject.CompareTag("rechargeShock"))
         {
-            if (other.gameObject.CompareTag("rechargeShock"))
+            
+            
+            shockCount++;
+            if (shockCount > shockCap)
             {
-                shockCount++;
-                if (shockCount > shockCap)
-                {
-                    shockCount = shockCap;
-                }
-                shockRecharge = false;
+                shockCount = shockCap;
             }
+            shockWaveText.GetComponent<TextMeshProUGUI>().text = $"Shocks: {shockCount}";
         }
-        
+
     }
     void OnCollisionEnter(Collision collision)
     {
@@ -300,30 +299,30 @@ public class PlayerContoller : MonoBehaviour
         {
             if (shockUsed == false)
             {
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (shockCount > 0)
                 {
-                    shock.gameObject.SetActive(true);
-                    shockTimer = 0;
-                    shockUsed = true;
-                }
-                if (Input.GetKeyDown(KeyCode.B))
-                {
-                    shock.gameObject.SetActive(true);
-                    shockTimer = 0;
-                    shockUsed = true;
+                    if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        shock.gameObject.SetActive(true);
+                        shockTimer = 0;
+                        shockUsed = true;
+                        shockCount--;
+                        shockWaveText.GetComponent<TextMeshProUGUI>().text = $"Shocks: {shockCount}";
+                    }
+                    if (Input.GetKeyDown(KeyCode.B))
+                    {
+                        shock.gameObject.SetActive(true);
+                        shockTimer = 0;
+                        shockUsed = true;
+                        shockCount--;
+                        shockWaveText.GetComponent<TextMeshProUGUI>().text = $"Shocks: {shockCount}";
+                    }
                 }
             }
         }
         
         
-        if (shockUsed == false)
-        {
-            if (shockTimer >= shockRechargeReady)
-            {
-                shockRecharge = true;
-                shockTimer = 0;
-            }
-        }
+        
         if (shockUsed == true)
         {
             if (shockTimer >= shockactive)
