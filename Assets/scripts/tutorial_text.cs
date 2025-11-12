@@ -24,6 +24,10 @@ public class tutorial_text : MonoBehaviour
         {
             Tutorial.GetComponent<TextMeshProUGUI>().text = "press E or V to active your shield";
         }
+        if (tutorialType == 3)
+        {
+            Tutorial.GetComponent<TextMeshProUGUI>().text = "press Q or B to activate a shock that stuns enemies";
+        }
         if (showAbillites > 0)
         {
             jumpText.SetActive(false);
@@ -67,15 +71,32 @@ public class tutorial_text : MonoBehaviour
                 Tutorial.GetComponent<TextMeshProUGUI>().text = "go into the pink cube to recharge your shield";
                 closeTutorial = true;
             }
-        }
-        if (tutorialType == 2)
-        {
             if (Input.GetKeyDown(KeyCode.E))
             {
 
                 timer = 0.0f;
                 Tutorial.SetActive(true);
                 Tutorial.GetComponent<TextMeshProUGUI>().text = "go into the pink cube to recharge your shield";
+                closeTutorial = true;
+            }
+        }
+        
+        if (tutorialType == 3)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+
+                timer = 0.0f;
+                Tutorial.SetActive(true);
+                Tutorial.GetComponent<TextMeshProUGUI>().text = "the teal cube will give you 1 shock back, you can hold more than one";
+                closeTutorial = true;
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+
+                timer = 0.0f;
+                Tutorial.SetActive(true);
+                Tutorial.GetComponent<TextMeshProUGUI>().text = "the teal cube will give you 1 shock back, you can hold more than one";
                 closeTutorial = true;
             }
         }

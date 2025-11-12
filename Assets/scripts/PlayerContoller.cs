@@ -67,7 +67,7 @@ public class PlayerContoller : MonoBehaviour
     bool shieldOn = false;
     
     //shock
-    public int shockCount = 0;
+    public int shockCount = 1;
     public int shockCap = 3;
     public float shockTimer = 0.0f;
     public float shockCooldown = 5;
