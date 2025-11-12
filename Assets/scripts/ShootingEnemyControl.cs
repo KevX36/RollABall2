@@ -1,17 +1,21 @@
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.Shapes;
 
 public class ShootingEnemyControl : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public Transform player;
+    public GameObject player;
+    public GameObject bullet;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        bullet.transform.position = transform.forward;
         stunStatic.gameObject.SetActive(false);
     }
-
+    private float shotTimer = 0;
+    public float shotCoolDown = 2;
     // Update is called once per frame
     void Update()
     {
@@ -19,7 +23,8 @@ public class ShootingEnemyControl : MonoBehaviour
         {
             if (player != null)
             {
-                
+                Vector3 aim = player.transform.position;
+                transform.rotation = Quaternion.LookRotation(aim);
             }
         }
         if (stuned == true)
@@ -49,5 +54,7 @@ public class ShootingEnemyControl : MonoBehaviour
             stuned = true;
             stunStatic.gameObject.SetActive(true);
         }
+        //shot timer
+        shotTimer += Time.deltaTime;
     }
 }
