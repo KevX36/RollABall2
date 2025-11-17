@@ -8,23 +8,33 @@ public class ShootingEnemyControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject player;
     public GameObject bullet;
+    public float shotSpeed = 0.5f;
+    private Rigidbody rb;
+    Vector3 shot;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        rb = bullet.gameObject.GetComponent<Rigidbody>();
         stunStatic.gameObject.SetActive(false);
     }
     private float shotTimer = 0;
-    public float shotCoolDown = 2;
+    public int shotCoolDown = 2;
+    public float reload = 2;
+    
+    
     // Update is called once per frame
     void Update()
     {
         if (stuned == false)
         {
-            if (player != null)
+            if (shotTimer < shotCoolDown)
             {
-                Vector3 aim = player.transform.position - transform.position;
-                transform.rotation = Quaternion.LookRotation(aim);
+                if (player != null)
+                {
+                    Vector3 aim = player.transform.position - transform.position;
+                    transform.rotation = Quaternion.LookRotation(aim);
+
+                }
             }
         }
         if (stuned == true)
@@ -37,7 +47,31 @@ public class ShootingEnemyControl : MonoBehaviour
                 stunStatic.gameObject.SetActive(false);
             }
         }
+        //shot timer
+        shotTimer += Time.deltaTime;
+        bullet.transform.rotation = transform.rotation;
+        if (shotTimer >= shotCoolDown)
+        {
+            bullet.gameObject.SetActive(true);
+            
+            shot = transform.forward;
+                
+            
+            
+            rb.AddForce(shot);
+            
+        }
+        if (shotTimer >= shotCoolDown + reload)
+        {
+            
+            bullet.transform.position = transform.position;
+            shotTimer = 0;
+            
+            bullet.gameObject.SetActive(false);
+            
 
+
+        }
     }
 
     //stun controlls
@@ -54,7 +88,11 @@ public class ShootingEnemyControl : MonoBehaviour
             stuned = true;
             stunStatic.gameObject.SetActive(true);
         }
-        //shot timer
-        shotTimer += Time.deltaTime;
+        
+        
+    }
+    private void shoot()
+    {
+
     }
 }
