@@ -8,7 +8,7 @@ public class ShootingEnemyControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public GameObject player;
     public GameObject bullet;
-    public float shotSpeed = 0.5f;
+    public float shotSpeed = 4;
     private Rigidbody rb;
     Vector3 shot;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,6 +50,7 @@ public class ShootingEnemyControl : MonoBehaviour
         //shot timer
         shotTimer += Time.deltaTime;
         bullet.transform.rotation = transform.rotation;
+
         if (shotTimer >= shotCoolDown)
         {
             bullet.gameObject.SetActive(true);
@@ -58,22 +59,28 @@ public class ShootingEnemyControl : MonoBehaviour
                 
             
             
-            rb.AddForce(shot);
+            rb.AddForce(shot*shotSpeed);
+            
             
         }
+
+
         if (shotTimer >= shotCoolDown + reload)
         {
-            
+            rb.angularVelocity=new Vector3(0,0,0);
+            rb.linearVelocity = new Vector3(0, 0, 0);
             bullet.transform.position = transform.position;
             shotTimer = 0;
             
+
             bullet.gameObject.SetActive(false);
             
 
 
         }
+        
     }
-
+    
     //stun controlls
     private bool stuned = false;
     private float stunTimer = 0.0f;
