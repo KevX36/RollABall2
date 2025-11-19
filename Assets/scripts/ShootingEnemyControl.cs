@@ -27,6 +27,37 @@ public class ShootingEnemyControl : MonoBehaviour
     {
         if (stuned == false)
         {
+            //shot timer
+            shotTimer += Time.deltaTime;
+            bullet.transform.rotation = transform.rotation;
+
+            if (shotTimer >= shotCoolDown)
+            {
+                bullet.gameObject.SetActive(true);
+
+                shot = transform.forward;
+
+
+
+                rb.AddForce(shot * shotSpeed);
+
+
+            }
+
+
+            if (shotTimer >= shotCoolDown + reload)
+            {
+                rb.angularVelocity = new Vector3(0, 0, 0);
+                rb.linearVelocity = new Vector3(0, 0, 0);
+                bullet.transform.position = transform.position;
+                shotTimer = 0;
+
+
+                bullet.gameObject.SetActive(false);
+
+
+
+            }
             if (shotTimer < shotCoolDown)
             {
                 if (player != null)
@@ -47,37 +78,7 @@ public class ShootingEnemyControl : MonoBehaviour
                 stunStatic.gameObject.SetActive(false);
             }
         }
-        //shot timer
-        shotTimer += Time.deltaTime;
-        bullet.transform.rotation = transform.rotation;
-
-        if (shotTimer >= shotCoolDown)
-        {
-            bullet.gameObject.SetActive(true);
-            
-            shot = transform.forward;
-                
-            
-            
-            rb.AddForce(shot*shotSpeed);
-            
-            
-        }
-
-
-        if (shotTimer >= shotCoolDown + reload)
-        {
-            rb.angularVelocity=new Vector3(0,0,0);
-            rb.linearVelocity = new Vector3(0, 0, 0);
-            bullet.transform.position = transform.position;
-            shotTimer = 0;
-            
-
-            bullet.gameObject.SetActive(false);
-            
-
-
-        }
+        
         
     }
     

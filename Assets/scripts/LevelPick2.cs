@@ -15,6 +15,14 @@ public class LevelPick2 : MonoBehaviour
     {
         SceneManager.LoadScene("level3");
     }
+    public void LoadLevel4()
+    {
+        SceneManager.LoadScene("level4");
+    }
+    public void LoadLevel5()
+    {
+        SceneManager.LoadScene("level5");
+    }
     public void LoadControls()
     {
         SceneManager.LoadScene("controls");

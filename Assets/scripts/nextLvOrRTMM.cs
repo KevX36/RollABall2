@@ -30,6 +30,20 @@ public class nextLvOrRTMM : MonoBehaviour
                     SceneManager.LoadScene("level3");
                 }
             }
+            else if (nextLV == 4)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    SceneManager.LoadScene("level4");
+                }
+            }
+            else if (nextLV == 3)
+            {
+                if (Input.GetKeyDown(KeyCode.Alpha5))
+                {
+                    SceneManager.LoadScene("level5");
+                }
+            }
         }
         else
         {

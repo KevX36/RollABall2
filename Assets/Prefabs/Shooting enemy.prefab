@@ -1017,7 +1017,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   bullet: {fileID: 2981537147543458650}
+  shotSpeed: 3
   shotCoolDown: 2
+  reload: 2
   StunRecover: 3
   stunStatic: {fileID: 6852404200637905959}
 --- !u!1 &8640638226021464049
