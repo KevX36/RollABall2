@@ -13,6 +13,7 @@ TagManager:
   - Lv1
   - rechargeShock
   - Shockwave
+  - Level
   layers:
   - Default
   - TransparentFX
