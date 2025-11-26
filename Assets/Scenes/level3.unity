@@ -6718,6 +6718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7225194204488409604, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: m_text
+      value: 'Shocks: 1'
+      objectReference: {fileID: 0}
     - target: {fileID: 7978209746176189440, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -28764,7 +28768,7 @@ PrefabInstance:
       objectReference: {fileID: 1971465669}
     - target: {fileID: 7669411294166750217, guid: caf88eb9b679f7546a10b77e3b098164, type: 3}
       propertyPath: m_VersionIndex
-      value: 155
+      value: 161
       objectReference: {fileID: 0}
     - target: {fileID: 9124665161372350539, guid: caf88eb9b679f7546a10b77e3b098164, type: 3}
       propertyPath: m_Mesh
