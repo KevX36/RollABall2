@@ -189,7 +189,19 @@ public class PlayerContoller : MonoBehaviour
 
             }
         }
-        
+        if (collision.gameObject.CompareTag("BIG enemy"))
+        {
+            Debug.Log("colided with enemy");
+            Destroy(self);
+
+            youwin.gameObject.SetActive(true);
+            youwin.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            RestartAndQuitText.gameObject.SetActive(true);
+            dashText.gameObject.SetActive(false);
+            shieldText.gameObject.SetActive(false);
+            shockWaveText.gameObject.SetActive(false);
+
+        }
     }
    
     void Update()

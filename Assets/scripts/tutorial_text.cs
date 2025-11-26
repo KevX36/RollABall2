@@ -28,6 +28,11 @@ public class tutorial_text : MonoBehaviour
         {
             Tutorial.GetComponent<TextMeshProUGUI>().text = "press Q or B to activate a shock that stuns enemies";
         }
+        if (tutorialType == 4)
+        {
+            Tutorial.GetComponent<TextMeshProUGUI>().text = "The big guy can break your shield\nThe little guy can't be stuned";
+            
+        }
         if (showAbillites > 0)
         {
             jumpText.SetActive(false);
@@ -44,7 +49,10 @@ public class tutorial_text : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        
+        if (tutorialType == 4)
+        {
+            closeTutorial = true;
+        }
         if (tutorialType == 0)
         {
             Tutorial.SetActive(false);

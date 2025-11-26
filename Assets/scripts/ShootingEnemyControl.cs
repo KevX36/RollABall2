@@ -49,6 +49,8 @@ public class ShootingEnemyControl : MonoBehaviour
             {
                 rb.angularVelocity = new Vector3(0, 0, 0);
                 rb.linearVelocity = new Vector3(0, 0, 0);
+                rb.angularVelocity = new Vector3(0, 0, 0);
+                rb.linearVelocity = new Vector3(0, 0, 0);
                 bullet.transform.position = transform.position;
                 shotTimer = 0;
 
