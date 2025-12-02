@@ -6718,6 +6718,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: basic UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6541020448452337142, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
+      propertyPath: nextLV
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7225194204488409604, guid: 0e30dcbd2568aa541a076a7a71ff78d6, type: 3}
       propertyPath: m_text
       value: 'Shocks: 1'
