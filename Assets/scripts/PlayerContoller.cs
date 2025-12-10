@@ -160,9 +160,9 @@ public class PlayerContoller : MonoBehaviour
         }
         if (other.gameObject.CompareTag("rechargeShock"))
         {
-            
-            
-            shockCount++;
+
+
+            shockCooldown = shockCap;
             if (shockCount > shockCap)
             {
                 shockCount = shockCap;

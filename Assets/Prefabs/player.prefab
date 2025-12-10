@@ -328,7 +328,7 @@ MonoBehaviour:
   weakShield: {fileID: 4852724349620660812}
   shield: {fileID: 7457892301788141119}
   shieldEnd: 3
-  shockCount: 0
+  shockCount: 3
   shockCap: 3
   shockTimer: 1
   shockCooldown: 5

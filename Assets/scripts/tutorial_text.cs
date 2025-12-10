@@ -104,7 +104,7 @@ public class tutorial_text : MonoBehaviour
 
                 timer = 0.0f;
                 Tutorial.SetActive(true);
-                Tutorial.GetComponent<TextMeshProUGUI>().text = "the teal cube will give you 1 shock back, you can hold more than one";
+                Tutorial.GetComponent<TextMeshProUGUI>().text = "the teal cube will recharge your shocks";
                 closeTutorial = true;
             }
         }

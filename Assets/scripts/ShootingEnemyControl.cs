@@ -20,7 +20,7 @@ public class ShootingEnemyControl : MonoBehaviour
     private float shotTimer = 0;
     public int shotCoolDown = 2;
     public float reload = 2;
-    
+    private bool fire = true;
     
     // Update is called once per frame
     void Update()
@@ -33,7 +33,11 @@ public class ShootingEnemyControl : MonoBehaviour
 
             if (shotTimer >= shotCoolDown)
             {
-                bullet.gameObject.SetActive(true);
+                if( fire)
+                {
+                    bullet.gameObject.SetActive(true);
+                    fire = false;
+                }
 
                 shot = transform.forward;
 
@@ -53,7 +57,7 @@ public class ShootingEnemyControl : MonoBehaviour
                 rb.linearVelocity = new Vector3(0, 0, 0);
                 bullet.transform.position = transform.position;
                 shotTimer = 0;
-
+                fire = true;
 
                 bullet.gameObject.SetActive(false);
 
