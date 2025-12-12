@@ -8257,6 +8257,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: easy move pickup (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5945044020730890826, guid: d09ca4acb9641bf43870bc9210813713, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.54
+      objectReference: {fileID: 0}
     - target: {fileID: 6483216894695814422, guid: d09ca4acb9641bf43870bc9210813713, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.5

@@ -318,11 +318,11 @@ MonoBehaviour:
   dashText: {fileID: 0}
   shieldText: {fileID: 0}
   shockWaveText: {fileID: 0}
-  speed: 6
+  speed: 6.5
   scoretext: {fileID: 0}
   timerText: {fileID: 0}
   dashCap: 3
-  dashBoost: 5
+  dashBoost: 6
   dashCoolDown: 1
   shieldTimer: 0
   weakShield: {fileID: 4852724349620660812}
