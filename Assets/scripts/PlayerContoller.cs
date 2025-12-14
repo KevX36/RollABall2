@@ -16,7 +16,7 @@ public class PlayerContoller : MonoBehaviour
     private Rigidbody rb;
     private float movementX;
     private float movementY;
-    
+    public Material color;
     
    
     private float baseSpeed;
@@ -43,7 +43,7 @@ public class PlayerContoller : MonoBehaviour
 
 
 
-    //dash
+    //dash releated
     public int dashCap = 3;
     private int dashCount;
     public float dashBoost = 0;
@@ -53,7 +53,7 @@ public class PlayerContoller : MonoBehaviour
     public float dashCoolDown = 1.0f;
     
 
-    //Shield
+    //Shield releated
     
     public float shieldTimer = 0.0f;
     public GameObject weakShield;
@@ -66,8 +66,8 @@ public class PlayerContoller : MonoBehaviour
     
     bool shieldOn = false;
     
-    //shock
-    public int shockCount = 1;
+    //shock releated
+    private int shockCount;
     public int shockCap = 3;
     public float shockTimer = 0.0f;
     public float shockCooldown = 5;
@@ -82,6 +82,7 @@ public class PlayerContoller : MonoBehaviour
     void Start()
     {
         dashCount = dashCap;
+        shockCount = shockCap;
         baseSpeed = speed;
         goal.SetActive(false);
         RestartAndQuitText.SetActive(false);
@@ -93,6 +94,8 @@ public class PlayerContoller : MonoBehaviour
         shield.SetActive(false);
         timerText.GetComponent<TextMeshProUGUI>().text = $"{timer}";
         shock.gameObject.SetActive(false);
+        //sets color as normal
+        color.color = new Color32(131, 255, 255, 255);
     }
     
     void OnMove(InputValue movementValue)
@@ -246,12 +249,26 @@ public class PlayerContoller : MonoBehaviour
                     candash = false;
                     dashText.GetComponent<TextMeshProUGUI>().text = $"Dashs: {dashCount}";
                     dashTimer = 0.0f;
+                    //change color to be lighter
+                    color.color = new Color32(213, 255, 255, 255);
+                    if (shockUsed == true)
+                    {
+                        //change color to be grayer instead
+                        color.color = new Color32(137, 174, 174, 255);
+                    }
                 }
             }
         }
         if (dashTimer >= dashCoolDown)
         {
             candash = true;
+            //return color to normal
+            color.color = new Color32(131, 255, 255, 255);
+            if (shockUsed == true)
+            {
+                //make color go from gray to dark instead
+                color.color = new Color32(88, 178, 178, 255);
+            }
         }
         //shield
         if (Input.GetKeyDown(KeyCode.E))
@@ -340,11 +357,25 @@ public class PlayerContoller : MonoBehaviour
             if (shockTimer >= shockactive)
             {
                 shock.gameObject.SetActive(false);
+                //set color to be darker
+                color.color = new Color32(88, 178, 178, 255);
+                if (candash == false)
+                {
+                    //make it grayer instead
+                    color.color = new Color32(137, 174, 174, 255);
+                }
             }
             if (shockTimer >= shockCooldown)
             {
                 shockUsed = false;
                 shockTimer = 0;
+                //return color to normal
+                color.color = new Color32(131, 255, 255, 255);
+                if (candash == false)
+                {
+                    //color just becomes lighter instead
+                    color.color = new Color32(213, 255, 255, 255);
+                }
             }
         }
         

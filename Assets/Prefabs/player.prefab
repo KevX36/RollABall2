@@ -310,6 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: {fileID: 6690413024673229381}
   goal: {fileID: 0}
+  color: {fileID: 2100000, guid: a0a36408d7cb8f6439b21fac3ebc5817, type: 2}
   goalTarget: 0
   abilities: 3
   nextLVText: {fileID: 0}
@@ -328,7 +329,6 @@ MonoBehaviour:
   weakShield: {fileID: 4852724349620660812}
   shield: {fileID: 7457892301788141119}
   shieldEnd: 3
-  shockCount: 3
   shockCap: 3
   shockTimer: 1
   shockCooldown: 5
