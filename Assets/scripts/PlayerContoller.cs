@@ -164,12 +164,9 @@ public class PlayerContoller : MonoBehaviour
         if (other.gameObject.CompareTag("rechargeShock"))
         {
 
-
-            shockCooldown = shockCap;
-            if (shockCount > shockCap)
-            {
-                shockCount = shockCap;
-            }
+            
+            shockCount = shockCap;
+            
             shockWaveText.GetComponent<TextMeshProUGUI>().text = $"Shocks: {shockCount}";
         }
 
